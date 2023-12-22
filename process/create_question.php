@@ -1,5 +1,8 @@
 <?php
 require_once('../utils/connexion_db.php');
+/**
+ * @var PDO $db
+ */
 
 session_start();
 
@@ -8,13 +11,12 @@ if(isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['score']) &
     $score = $_POST['score'];
 
     if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
-        echo "test";
         $imageSize = 2097152;
         $extensions = ['jpg', 'png', 'jpeg'];
         if ($_FILES['image']['size'] <= $imageSize) {
             $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1));
             if (in_array($extensionUpload, $extensions)) {
-                $pathImage = "../public/image_question/" . $_SESSION['id'] . "-" . $_FILES['image']['name'];
+                $pathImage = "public/image_question/" . $_SESSION['id'] . "-" . $_FILES['image']['name'];
                 $uploadToPath = move_uploaded_file($_FILES['image']['tmp_name'], $pathImage);
             } else {
                 $error = "Votre image doit être au format jpg, jpeg ou png";
@@ -30,7 +32,7 @@ if(isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['score']) &
 
     $query->bindValue(':title', $title);
     $query->bindValue(':score_granted', $score);
-    var_dump($pathImage);
+
     $query->bindValue(':image', $pathImage);
     $query->execute();
 
@@ -39,4 +41,3 @@ if(isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['score']) &
     header("Location: ../add_question.php?error=Veuillez remplir tous les champs");
     exit;
 }
-?>

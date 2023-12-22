@@ -32,7 +32,7 @@ CREATE TABLE `answer` (
   `question_id` int UNSIGNED NOT NULL,
   `content` varchar(255) NOT NULL,
   `is_correct` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `question` (
   `title` varchar(255) NOT NULL,
   `score_granted` int NOT NULL,
   `image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `question`
@@ -62,7 +62,7 @@ CREATE TABLE `user` (
   `id` int UNSIGNED NOT NULL,
   `pseudo` varchar(255) NOT NULL,
   `score` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -78,7 +78,7 @@ CREATE TABLE `user_answer` (
   `user_id` int UNSIGNED NOT NULL,
   `question_id` int UNSIGNED NOT NULL,
   `answer` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables

@@ -1,11 +1,15 @@
 <?php
-
-if(isset($_GET['id']) && !empty($_GET['id'])) {
-    $idQuestion = $_GET['id'];
-    $query = $db->prepare('SELECT * FROM question WHERE id = :id');
-    $query->bind(':id', $idQuestion);
+/**
+ * @var PDO $db
+ */
+session_start();
+if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+    $idQuestion = $_SESSION['id'];
+    $query = $db->prepare('SELECT * FROM question JOIN answer ON answer.question_id = question.id 
+                            WHERE question.id = :id');
+    $query->bindValue(':id', $idQuestion);
     $query->execute();
-    $question = $query->fetch();
+    $questions = $query->fetchAll();
 } else {
     header('Location: index.php');
     exit;
