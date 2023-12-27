@@ -15,7 +15,7 @@ if(isset($_SESSION['score']) && !empty($_SESSION['score'])) {
         'pseudo' => $pseudo
     ]);
 
-    unset($_SESSION['score']);
+    $_SESSION['score'] = 0;
     header('Location: ../index.php');
     exit;
 } else {
