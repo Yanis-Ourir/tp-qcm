@@ -10,7 +10,7 @@ include_once './partials/header.php';
 <div class="d-flex flex-column justify-content-center align-items-center">
 
 <h3> <?= $_SESSION['pseudo'] ?>, votre score est de <?= $_SESSION['score'] ?> points</h3>
-<?php if($_SESSION['score'] >= 8) { ?>
+<?php if($_SESSION['score'] >= 30) { ?>
     <p>Bravo ! Vous êtes bon !</p>
     <img src="https://dojotaku.com/cdn/shop/articles/luffy-age.webp?v=1686482098">
 <?php } else { ?>
@@ -25,3 +25,5 @@ include_once './partials/header.php';
 </div>
 
 <?php include_once './partials/footer.php' ?>
+
+
